@@ -1,2 +1,7 @@
-/* So empty :-( */
-var hello = 'wow, such world!!!';
+var React = require('react');
+var Sector = require('./sector');
+
+React.render(
+  <Sector />,
+  document.getElementById('sector')
+);
