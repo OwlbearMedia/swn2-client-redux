@@ -58,12 +58,6 @@ module.exports = function(grunt) {
             }
         },
 
-        extract_sourcemap: {
-            files: {
-                // Target-specific file lists and/or options go here.
-            },
-        },
-
         browserify: {
             dist: {
                 src: [ 'app/scripts/*.js', 'app/scripts/*.jsx' ],
@@ -83,7 +77,6 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-express-server');
-    grunt.loadNpmTasks('grunt-extract-sourcemap');
 
     grunt.registerTask('default', [        
         'browserify',
