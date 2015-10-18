@@ -1,2 +1,2 @@
 /* So empty :-( */
-var hello = 'world';
+var hello = 'wow, such world!!!';

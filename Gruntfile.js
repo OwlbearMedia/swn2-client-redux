@@ -39,7 +39,7 @@ module.exports = function(grunt) {
 
         watch: {
             react: {
-                files: [ 'app/scripts/*.jsx' ],
+                files: [ 'app/scripts/*.jsx', 'app/scripts/*.js' ],
                 tasks: [ 'browserify' ]
             },
             sass: {
