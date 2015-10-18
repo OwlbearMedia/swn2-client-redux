@@ -13,6 +13,14 @@ module.exports = function(grunt) {
             }
         },
 
+        sass: {
+            dist: {
+                files: {
+                    'dist/styles/app.css': 'app/styles/app.scss'
+                }
+            }
+        },
+
         copy: {
             main: {
                 files: [
@@ -34,6 +42,10 @@ module.exports = function(grunt) {
                 files: [ 'app/scripts/*.jsx' ],
                 tasks: [ 'browserify' ]
             },
+            sass: {
+                files: [ 'app/styles/*.scss' ],
+                tasks: [ 'sass' ]
+            },
             express: {
                 files:  [ '*.js' ],
                 tasks:  [ 'express:dev' ],
@@ -46,25 +58,37 @@ module.exports = function(grunt) {
             }
         },
 
-        browserify: {
-            options: {
-                transform: [ require('grunt-react').browserify ]
+        extract_sourcemap: {
+            files: {
+                // Target-specific file lists and/or options go here.
             },
-            client: {
-                src: [ 'app/scripts/**/*.jsx' ],
-                dest: 'dist/scripts/bundle.js'
+        },
+
+        browserify: {
+            dist: {
+                src: [ 'app/scripts/*.js', 'app/scripts/*.jsx' ],
+                dest: 'dist/scripts/bundle.js',
+                options: {
+                    browserifyOptions: {
+                        debug: true
+                    },
+                    transform: [ require('grunt-react').browserify ]
+                }
             }
         }
     });
 
     grunt.loadNpmTasks('grunt-browserify');
     grunt.loadNpmTasks('grunt-contrib-copy');
+    grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-express-server');
+    grunt.loadNpmTasks('grunt-extract-sourcemap');
 
     grunt.registerTask('default', [        
         'browserify',
         'copy',
+        'sass',
         'express:dev',
         'watch'
     ]);
