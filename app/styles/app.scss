@@ -1,1 +1,12 @@
 @import "lib/bootstrap/bootstrap";
+
+.sector-map {
+    height: 750px;
+    width: 600px;
+
+    polygon {
+        fill: white;
+        stroke: black;
+        stroke-width: 2px;
+    }
+}

@@ -1,7 +1,9 @@
 var React = require('react');
+var ReactDOM = require('react-dom');
+
 var Sector = require('./sector');
 
-React.render(
+ReactDOM.render(
   <Sector />,
   document.getElementById('sector')
 );
