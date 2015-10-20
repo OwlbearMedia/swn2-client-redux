@@ -1,12 +1,20 @@
 @import "lib/bootstrap/bootstrap";
 
 .sector-map {
-    height: 750px;
+    height: 830px;
     width: 600px;
 
-    polygon {
-        fill: white;
-        stroke: black;
-        stroke-width: 2px;
+    .hex-container {
+        .hex {
+            fill: transparent;
+            stroke: $text-color;
+            stroke-width: 2px;
+        }
+
+        text {
+            fill: $gray-light;
+            text-anchor: middle;
+        }
     }
+    
 }
