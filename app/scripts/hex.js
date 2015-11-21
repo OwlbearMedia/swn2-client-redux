@@ -3,13 +3,26 @@ var React = require('react');
 var Hex = React.createClass({
     render: function() {
         return(
-            <svg className="hex-container" x={this.props.x} y={this.props.y} style={{width: this.props.radius * 2 + 'px'}}>
+            // Width is set as an inline style because I wanted the size of the hex to be controlled via JS rather than CSS
+            <svg className="hex-container" onClick={this.highlight} x={this.props.x} y={this.props.y} style={{width: this.props.radius * 2 + 'px'}}>
                 <polygon className="hex" points={this.hexPoints(this.props.radius)}></polygon>
                 <text x={this.props.radius} y={21}>
-                    {this.pad(this.props.column) + this.pad(this.props.row)}
+                    {this.getHexNumber()}
                 </text>
             </svg>
         );
+    },
+
+    highlight: function() {
+        console.log(this.getHexNumber());
+    },
+
+    getHexNumber: function() {
+        return pad(this.props.column) + pad(this.props.row);
+        
+        function pad(n) {
+            return (n < 10) ? ('0' + n) : n;
+        }
     },
 
     hexPoints: function(radius) {
@@ -23,10 +36,6 @@ var Hex = React.createClass({
         }
 
         return points.join(' ');
-    },
-
-    pad: function(n) {
-        return (n < 10) ? ('0' + n) : n;
     }
 });
 
